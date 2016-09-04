@@ -39,7 +39,7 @@ test:
     - instaseis
   commands:
     # Travis' OSX tests require more open files.
-    - if [[ $TRAVIS == true ]]; then ulimit -n 2048 ; fi  # [osx]
+    - "if [[ $TRAVIS == true ]]; then ulimit -n 2048 ; fi"  # [osx]
     - python -m instaseis.tests
   requires:
     # Not having the next two will results in substantially fewer test to be
