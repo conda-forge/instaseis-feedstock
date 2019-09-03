@@ -12,8 +12,8 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  number: 2
+  script: "{{ PYTHON }} -m pip install . -vv"
   skip: True  # [win]
 
 requirements:
@@ -22,7 +22,7 @@ requirements:
     - {{ compiler('c') }}
   host:
     - python
-    - setuptools
+    - pip
   run:
     - python
     - numpy
