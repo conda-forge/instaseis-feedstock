@@ -28,7 +28,7 @@ requirements:
     - h5py
     - obspy
     - future
-    - tornado
+    - tornado <=5
     - requests
     - jsonschema
     - pyqt
@@ -47,7 +47,7 @@ test:
     - click  # [not osx]
     - netcdf4  # [not osx]
     - responses
-    - pytest
+    - pytest =4
     - pytest-xdist
     - mock  # [py27]
     - futures  # [py27]
