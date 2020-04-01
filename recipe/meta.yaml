@@ -14,7 +14,7 @@ source:
 build:
   number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
-  skip: True  # [win]
+  skip: true  # [win]
 
 requirements:
   build:
@@ -52,7 +52,7 @@ about:
   home: http://instaseis.net
   license: LGPL-3.0-or-later
   license_file: LICENSE.txt
-  summary: 'Instant Global Broadband Seismograms Based on a Waveform Database'
+  summary: Instant Global Broadband Seismograms Based on a Waveform Database
   description: |
     Instaseis calculates broadband seismograms from Green's function databases
     generated with AxiSEM and allows for near instantaneous (on the order of
