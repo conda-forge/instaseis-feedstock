@@ -22,6 +22,7 @@ requirements:
     - {{ compiler('c') }}
   host:
     - python
+    - pip
     - setuptools
   run:
     - python
@@ -49,7 +50,8 @@ test:
 
 about:
   home: http://instaseis.net
-  license: LGPL-3.0 (for non-commercial/academic use)
+  license: LGPL-3.0-or-later
+  license_file: LICENSE.txt
   summary: 'Instant Global Broadband Seismograms Based on a Waveform Database'
   description: |
     Instaseis calculates broadband seismograms from Green's function databases
