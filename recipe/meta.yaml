@@ -1,6 +1,6 @@
 {% set name = "instaseis" %}
-{% set version = "1.3.0" %}
-{% set sha256 = "97b30d80d51b6841d41f9266d95a44bf697a8b2dbe56b2b8e39eacd895f9b383" %}
+{% set version = "1.4.1" %}
+{% set sha256 = "c6a1e7741be5a1c91c87e07d3fa0efb5b465c0ff2abe74d7a0ba1b2779253142" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1001
+  number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
   skip: True  # [win]
 
@@ -22,20 +22,17 @@ requirements:
     - {{ compiler('c') }}
   host:
     - python
+    - pip
     - setuptools
   run:
     - python
     - numpy
     - h5py
     - obspy
-    - future
-    - tornado >=5,<6
+    - tornado >=6
     - requests
     - jsonschema
-    - pyqt
-    - pyqtgraph
     - geographiclib
-    - futures  # [py27]
 
 test:
   imports:
@@ -50,12 +47,11 @@ test:
     - responses
     - pytest
     - pytest-xdist
-    - mock  # [py27]
-    - futures  # [py27]
 
 about:
   home: http://instaseis.net
-  license: LGPL-3.0 (for non-commercial/academic use)
+  license: LGPL-3.0-or-later
+  license_file: LICENSE.txt
   summary: 'Instant Global Broadband Seismograms Based on a Waveform Database'
   description: |
     Instaseis calculates broadband seismograms from Green's function databases
