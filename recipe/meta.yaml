@@ -1,6 +1,6 @@
 {% set name = "instaseis" %}
-{% set version = "1.4.1" %}
-{% set sha256 = "c6a1e7741be5a1c91c87e07d3fa0efb5b465c0ff2abe74d7a0ba1b2779253142" %}
+{% set version = "1.4.2" %}
+{% set sha256 = "7b89b338bfb81b24f29d92ff1bbebc7cc04d65be2624c93c84bbd81ef4b13047" %}
 
 package:
   name: {{ name|lower }}
