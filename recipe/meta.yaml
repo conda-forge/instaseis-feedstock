@@ -13,8 +13,8 @@ source:
 
 build:
   noarch: python
-  number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv"
+  number: 1
+  script: "SETUPTOOLS_SCM_PRETEND_VERSION={{ version }} {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv"
 
 requirements:
   host:
@@ -23,6 +23,7 @@ requirements:
     - wheel
     - numpy
     - setuptools
+    - setuptools-scm
   run:
     - python >={{ python_min }}
     - h5py
