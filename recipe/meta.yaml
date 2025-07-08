@@ -1,52 +1,50 @@
 {% set name = "instaseis" %}
-{% set version = "1.4.2" %}
-{% set sha256 = "7b89b338bfb81b24f29d92ff1bbebc7cc04d65be2624c93c84bbd81ef4b13047" %}
+{% set version = "1.5.0" %}
+{% set sha256 = "c4a84953c5ddfebb8c716dc099e1456a4cb33f30a32c48d5494ab3a2d0a5fdb8" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 2
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
-  skip: true  # [win]
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv"
 
 requirements:
-  build:
-    - {{ compiler('fortran') }}
-    - {{ compiler('c') }}
   host:
-    - python
+    - python >=3.11
     - pip
+    - wheel
+    - numpy
     - setuptools
   run:
-    - python
-    - numpy
+    - python >=3.11
     - h5py
+    - numpy {{ pin_compatible('numpy') }}
     - obspy
-    - tornado >=6
+    - tornado
     - requests
-    - jsonschema
     - geographiclib
+    - jsonschema
+    - numba
 
 test:
+  source_files:
+    - tests
   imports:
     - instaseis
   requires:
-    # Not having the next two will results in substantially fewer test to be
-    # run. The travis OSX builder takes a long time otherwise and I'm
-    # confident enough that everything works even without the additional
-    # tests.
-    - click  # [not osx]
-    - netcdf4  # [not osx]
-    - responses
     - pytest
     - pytest-xdist
+    - click
+    - netcdf4
+    - responses
+  commands:
+    - pytest -n 2 tests
 
 about:
   home: http://instaseis.net
