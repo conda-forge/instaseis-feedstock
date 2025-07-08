@@ -1,28 +1,30 @@
 {% set name = "instaseis" %}
 {% set version = "1.5.0" %}
 {% set sha256 = "c4a84953c5ddfebb8c716dc099e1456a4cb33f30a32c48d5494ab3a2d0a5fdb8" %}
+{% set python_min = "3.11" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
   noarch: python
+  number: 0
   script: "{{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv"
 
 requirements:
   host:
-    - python >=3.11
+    - python {{ python_min }}
     - pip
     - wheel
     - numpy
     - setuptools
   run:
-    - python >=3.11
+    - python >={{ python_min }}
     - h5py
     - numpy {{ pin_compatible('numpy') }}
     - obspy
@@ -38,6 +40,7 @@ test:
   imports:
     - instaseis
   requires:
+    - python {{ python_min }}
     - pytest
     - pytest-xdist
     - click
