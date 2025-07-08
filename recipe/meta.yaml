@@ -26,7 +26,7 @@ requirements:
   run:
     - python >={{ python_min }}
     - h5py
-    - numpy {{ pin_compatible('numpy') }}
+    - numpy
     - obspy
     - tornado
     - requests
